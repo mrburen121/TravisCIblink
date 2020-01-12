@@ -13,7 +13,6 @@ install:
 script:
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
 notifications:
-    
 # require the branch name to be master (note for PRs this is the base branch name)
 notifications:
   if: branch = master
