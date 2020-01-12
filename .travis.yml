@@ -13,6 +13,12 @@ install:
 script:
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
 notifications:
-  email:
-    on_success: change
-    on_failure: change
+    
+# require the branch name to be master (note for PRs this is the base branch name)
+notifications:
+  if: branch = master
+    email:
+      recipients:
+        - c.ketterink@outlook.com
+      on_success: always 
+      on_failure: always
