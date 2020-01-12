@@ -1,4 +1,10 @@
+# Programming language
 language: c
+# Build only master branch
+branches:
+  only:
+  - master
+# Install Arduino packagage
 before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
   - sleep 3
@@ -7,15 +13,15 @@ before_install:
   - tar xf arduino-1.8.10-linux64.tar.xz
   - sudo mv arduino-1.8.10 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+#install library's
 install:
   #- ln -s $PWD /usr/local/share/arduino/libraries/Adafruit_FONA
   #- arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
 script:
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
 notifications:
-  if: branch = master
-    email:
-      recipients:
-        - c.ketterink@outlook.com
-      on_success: always
-      on_failure: change 
+  email:
+    recipients:
+      - c.ketterink@outlook.com
+    on_success: always
+    on_failure: change 
