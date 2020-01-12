@@ -19,7 +19,7 @@ install:
   #- ln -s $PWD /usr/local/share/arduino/libraries/Adafruit_FONA
   #- arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
 script:
-  - arduino --verify --export TravisCIblink.bin --board arduino:avr:uno $PWD/TravisCIblink.ino
+  - arduino --verify --export:TravisCIblink.bin --board arduino:avr:uno $PWD/TravisCIblink.ino
 notifications:
   email:
     recipients:
