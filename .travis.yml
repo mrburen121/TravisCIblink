@@ -4,6 +4,7 @@ language: c
 branches:
   only:
   - master
+  - release
 # Install Arduino packagage
 before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
@@ -19,27 +20,6 @@ install:
   #- arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
 script:
   - arduino --verify --export TravisCIblink.bin --board arduino:avr:uno $PWD/TravisCIblink.ino
-after_success:
-
-setup_git() {
-  git config --global user.email "mrburen121@gmail.com"
-  git config --global user.name "Travis CI"
-}
-
-commit_website_files() {
-  git checkout -b release
-  git add . *.bin
-  git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
-}
-
-upload_files() {
-  git remote add origin-pages https://2d3969bd70adeae2f5b9c31db9836bb641a11611@github.com/mrburen121/TravisCIblink.git > /dev/null 2>&1
-  git push --quiet --set-upstream origin-pages gh-pages 
-}
-
-setup_git
-commit_website_files
-upload_files
 notifications:
   email:
     recipients:
