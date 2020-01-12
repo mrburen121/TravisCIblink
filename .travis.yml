@@ -13,8 +13,9 @@ install:
 script:
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
 notifications:
-  email:
-    recipients:
-      - c.ketterink@outlook.com
-    on_success: always
-    on_failure: change 
+  if: branch = master
+    email:
+      recipients:
+        - c.ketterink@outlook.com
+      on_success: always
+      on_failure: change 
