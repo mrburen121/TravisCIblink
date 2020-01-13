@@ -22,12 +22,16 @@ before_deploy:
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
 - git tag $TRAVIS_TAG
 deploy:
-  provider: releases
-  user: username
-  password: password
-  file_glob: true
   file: "$PWD/TravisCIblink.ino"
   skip_cleanup: true
+deploy:
+  provider: releases
+  api_key:
+    secure: m8QW0/VPTTsuxETgLu97WIYzAww0FhQhwsMz5GOiVPBFntO0zCfvlHipMMWBIq1wSwlUGjxYq8rTFf47CMnP0h/C194OHKFJoQkBD9tKRpuH5nxsNL/JH1dLgP9G9xXSLJQkgfkVAZH8BbfUW3+y8oL1eqFKrrcOcloGi+Rc+nK62Hf7JSb6gfyVUgzeXyluCZPhYUnSrqsCExQYF7ZDQmrSQ3EMfNPxMH7JCFEd5jm9jQuEGUPVC8QT6Jrrg8FMhBl3015v37B3llrzAggwp5RydzSjdyb2cy0NuwEPeQB07G/WmrLfR4MrGzn3pfRNW2+YXjER9HdJ1t9Rvi7CFbhNorjJZXlVMwwuovVD5iYYDbntGGTy13yRTl0nzFv2G6s37RnbdWI19QdCs3U5emx/ZjDHwKc7QKl7YH32myVVil1E37Q+UCmOr7f+e9abUse9v3DUkcBm99V/yUlLq4TM2qKOt6Da1dPcoepF8Sju2cyOyNyHzNVAvkEMuw3MQM2qzedmeuij6B9YjTzjsLbrRZRuAZrPOOGCtCgSaU0AkP2AzLls3ERtm/atqCqlwvk/pQR8Zr+j9ScHl8grA10IbW2v4gpVKz/uJ99DAAvS2GFyvdTFWY2TpxOZ+ir01AbdRXZzkzWV2I6BBezMEEjed5rNYDnYuBKhDDpT+js=
+  file: "$PWD/TravisCIblink.ino"
+  skip_cleanup: true
+  #on:
+    #tags: true
 # Notifications after build
 notifications: 
   #email:
