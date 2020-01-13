@@ -20,6 +20,18 @@ install:
   #- arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
 script:
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
+#
+before_deploy:
+# Set up git user name and tag this commit
+  - git config --local user.name "MrBuren121"
+  #- git config --local user.email "YOUR GIT USER EMAIL"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
+deploy:
+  provider: releases
+  api_key: f7008eba3cab8cc8a0ed60bbf2ec71687addf9cb
+  file: TravisCIblink.ino
+  skip_cleanup: true
 notifications:
   #email:
     #recipients:
