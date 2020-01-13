@@ -18,6 +18,14 @@ before_install:
 install:
   #- ln -s $PWD /usr/local/share/arduino/libraries/Adafruit_FONA
   #- arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
+## Update composer and run the appropriate composer command
+before_script:
+  - composer self-update -q
+  - if [ -n "$PUBLIC_KEY" ]; then composer config github-oauth.github.com ${PUBLIC_KEY}; fi;
+  - if [ -z "$dependencies" ]; then composer install; fi;
+  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
+  - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
+  - composer show -i
 script:
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
 #
