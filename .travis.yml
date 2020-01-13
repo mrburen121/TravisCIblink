@@ -15,6 +15,7 @@ before_install:
   - tar xf arduino-1.8.10-linux64.tar.xz
   - sudo mv arduino-1.8.10 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+  - source $TRAVIS_BUILD_DIR/install.sh
 #install library's
 install:
   #- ln -s $PWD /usr/local/share/arduino/libraries/Adafruit_FONA
