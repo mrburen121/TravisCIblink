@@ -18,7 +18,7 @@ before_install:
 - source $TRAVIS_BUILD_DIR/install.sh
 script:
   #- build_platform nrf52840
-  - build_platform esp32
+  #- build_platform esp32
   - build_platform uno
   #- build_platform leonardo
   #- build_platform zero
