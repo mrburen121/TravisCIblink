@@ -34,8 +34,8 @@ deploy:
   file_glob: true
   file: directory/*
   skip_cleanup: true
-  on:
-    tags: true
+  #on:
+    #tags: true
 notifications:
   #email:
     #recipients:
