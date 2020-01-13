@@ -15,20 +15,28 @@ before_install:
   - tar xf arduino-1.8.10-linux64.tar.xz
   - sudo mv arduino-1.8.10 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
-  - source $TRAVIS_BUILD_DIR/install.sh
+  #- source $TRAVIS_BUILD_DIR/install.sh
+  # define output directory for .hex files
+  #- export ARDUINO_HEX_DIR=arduino_build_$TRAVIS_BUILD_NUMBER
 #install library's
 install:
   #- ln -s $PWD /usr/local/share/arduino/libraries/Adafruit_FONA
   #- arduino --install-library "Adafruit SleepyDog Library,Adafruit MQTT Library"
 script:
-  - build_platform nrf52840
-  - build_platform esp32
-  - build_platform uno
-  - build_platform leonardo
-  - build_platform zero
-  - build_platform esp8266
-  - build_platform m4
+  #- build_platform nrf52840
+  #- build_platform esp32
+  #- build_platform uno
+  #- build_platform leonardo
+  #- build_platform zero
+  #- build_platform esp8266
+  #- build_platform m4
   - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
+deploy:
+  provider: releases
+  api_key:
+    secure: m8QW0/VPTTsuxETgLu97WIYzAww0FhQhwsMz5GOiVPBFntO0zCfvlHipMMWBIq1wSwlUGjxYq8rTFf47CMnP0h/C194OHKFJoQkBD9tKRpuH5nxsNL/JH1dLgP9G9xXSLJQkgfkVAZH8BbfUW3+y8oL1eqFKrrcOcloGi+Rc+nK62Hf7JSb6gfyVUgzeXyluCZPhYUnSrqsCExQYF7ZDQmrSQ3EMfNPxMH7JCFEd5jm9jQuEGUPVC8QT6Jrrg8FMhBl3015v37B3llrzAggwp5RydzSjdyb2cy0NuwEPeQB07G/WmrLfR4MrGzn3pfRNW2+YXjER9HdJ1t9Rvi7CFbhNorjJZXlVMwwuovVD5iYYDbntGGTy13yRTl0nzFv2G6s37RnbdWI19QdCs3U5emx/ZjDHwKc7QKl7YH32myVVil1E37Q+UCmOr7f+e9abUse9v3DUkcBm99V/yUlLq4TM2qKOt6Da1dPcoepF8Sju2cyOyNyHzNVAvkEMuw3MQM2qzedmeuij6B9YjTzjsLbrRZRuAZrPOOGCtCgSaU0AkP2AzLls3ERtm/atqCqlwvk/pQR8Zr+j9ScHl8grA10IbW2v4gpVKz/uJ99DAAvS2GFyvdTFWY2TpxOZ+ir01AbdRXZzkzWV2I6BBezMEEjed5rNYDnYuBKhDDpT+js=
+  file: $PWD/TravisCIblink.ino.hex
+  skip_cleanup: true
 # Notifications after build
 notifications: 
   #email:
