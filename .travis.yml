@@ -41,7 +41,7 @@ deploy:
   provider: releases
   api_key:
     secure: EZrrLV5GRYtF7+DEHd8d1c4/q8LPRNByWkPu5zTG/y1osZ5I1Nu2SPq64ZcXs+l/4a2Cq1oy5iloZKBXovGg5zNNh9wARCj5T3+zgeXe4+tWtS1PTurm0M4PmFbz6K7aj7v8EpUvAsljBomHdw5/0tYtVXm5SkMtYmUcz/5MsoG6SbWRxLpsOKiyUJN0sTo3sqLrOzWTQVyphwVNDZsZKB+d5VgXTAZvhN94VnnTX0cm5k71npqasLBEqyerxqFhDF7AzIXJWKYrdIgo6VXGjuQhzutuvC+Yu8E9mF5HsK6WSi1QTFbi3OJuFr1UrKwWVsCIbqOw3qxslIvA7OSOAPKeZFPo7szI+GkXW5Y4HCwSYhg40SZyoqQHfo1Q98K1uR8JAHmPR8q5lM2B1jqN+g4KEJiCPoY39EuMnVXiNuX6K3xL81iLKYoI3P51qn4xT27af3b7Tq5/KuFhEw+uHQ7/7XRMpaJx5J4v+uPe/9CefvyIGN1r6aHnvWUME5aqoNggGPnE4SRIXjAgqllDDhZ6B2CJQqNebnlBMKjw3ERJ7fQOGETKTdm7eIjiTtIadY8pJDlb1wHkuxFrCnG47ltSpdB1YNxgwi5k1jsizjBvfx56TaazueQxYQUt7doP9OdetmmpyZrjk/AavkHjoWxyR0bCtTWMWcDMCB7FRe0=
-  file: $PWD/TravisCIblink.ino.hex
+  file: $PWD/version.txt
   skip_cleanup: true
   on:
     tags: false
