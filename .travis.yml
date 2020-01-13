@@ -19,12 +19,12 @@ before_install:
 script:
   #- build_platform nrf52840
   #- build_platform esp32
-  - build_platform uno
+  #- build_platform uno
   #- build_platform leonardo
   #- build_platform zero
-  - build_platform esp8266
+  #- build_platform esp8266
   #- build_platform m4
-  - arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
+- arduino --verify --board arduino:avr:uno $PWD/TravisCIblink.ino
 before_deploy:
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
 - git tag $TRAVIS_TAG
