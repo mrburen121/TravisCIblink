@@ -15,7 +15,7 @@ before_install:
   - sudo mv arduino-1.8.10 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 #- source $TRAVIS_BUILD_DIR/install.sh
-  - source <(curl -SLs https://raw.githubusercontent.com/mrburen121/TravisCIblink/master/install.sh)
+  #- source <(curl -SLs https://raw.githubusercontent.com/mrburen121/TravisCIblink/master/install.sh)
 script:
   #- build_platform nrf52840
   #- build_platform esp32
