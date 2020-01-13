@@ -32,7 +32,7 @@ deploy:
   user: username
   password: password
   file_glob: true
-  file: directory/*
+  file: $PWD/TravisCIblink.ino
   skip_cleanup: true
   #on:
     #tags: false
