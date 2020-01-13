@@ -44,7 +44,7 @@ deploy:
   file: $PWD/version.txt
   skip_cleanup: true
   on:
-    branch: release
+    branch: master
     #tags: false
 # Notifications after build
 notifications: 
